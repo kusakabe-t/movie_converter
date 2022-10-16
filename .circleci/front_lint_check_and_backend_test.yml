@@ -1,0 +1,42 @@
+version: 2.1
+parameters:
+  is_front_lint_check:
+    type: boolean
+    default: false
+  is_backend_test:
+    type: boolean
+    default: false
+jobs:
+  front_lint_check:
+    docker:
+      - image: cimg/node:18.1.0
+    working_directory: ~/movie_converter
+    steps:
+      - checkout:
+          path: ~/movie_converter
+      - run:
+          name: Install dependencies
+          command: yarn
+      - run:
+          name: Lint check
+          command: yarn lint
+  backend_test:
+    docker:
+      - image: cimg/rust:1.64.0
+    working_directory: ~/movie_converter/src-tauri
+    steps:
+      - checkout:
+          path: ~/movie_converter
+      # TODO: テストを書いたら追加
+      - run:
+          name: Check cargo version
+          command: cargo --version
+workflows:
+  lint_check:
+    when: << pipeline.parameters.is_front_lint_check >>
+    jobs:
+      - front_lint_check
+  test:
+    when: << pipeline.parameters.is_backend_test >>
+    jobs:
+      - backend_test
