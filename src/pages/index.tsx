@@ -20,7 +20,7 @@ function App() {
 
       <div className="row">
         <span className="logos">
-          <a href="https://nextjs.org" target="_blank">
+          <a href="https://nextjs.org" target="_blank" rel="noreferrer">
             <Image
               width={144}
               height={144}
@@ -31,7 +31,7 @@ function App() {
           </a>
         </span>
         <span className="logos">
-          <a href="https://tauri.app" target="_blank">
+          <a href="https://tauri.app" target="_blank" rel="noreferrer">
             <Image
               width={144}
               height={144}
@@ -42,7 +42,7 @@ function App() {
           </a>
         </span>
         <span className="logos">
-          <a href="https://reactjs.org" target="_blank">
+          <a href="https://reactjs.org" target="_blank" rel="noreferrer">
             <Image
               width={144}
               height={144}
