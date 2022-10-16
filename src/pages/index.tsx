@@ -1,33 +1,25 @@
 import { useState } from "react";
-import { invoke } from "@tauri-apps/api/tauri";
+import { DropArea } from "../components/DropArea";
+import { SelectBox } from "../components/SelectBox";
+
+// FIXME: まだ使えないため、様子見
+// import { Store } from "tauri-plugin-store-api";
+// cf. https://github.com/tauri-apps/tauri-plugin-store
+
+export const extensions = [
+  { id: 1, name: "webm" },
+  { id: 2, name: "mp4" },
+] as const;
+
+export type ExtensionType = typeof extensions[number];
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("greet", { name }));
-  }
+  const [selected, setSelected] = useState<ExtensionType>(extensions[0]);
 
   return (
-    <div className="container">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-
-      <div className="row">
-        <div>
-          <input
-            id="greet-input"
-            onChange={(e) => setName(e.currentTarget.value)}
-            placeholder="Enter a name..."
-          />
-          <button type="button" onClick={() => greet()}>
-            Greet
-          </button>
-        </div>
-      </div>
-
-      <p>{greetMsg}</p>
+    <div className="m-[16px] mx-auto w-[500px]">
+      <SelectBox selected={selected} setSelected={setSelected} />
+      <DropArea />
     </div>
   );
 }
