@@ -1,5 +1,5 @@
 [package]
-name = "movie_extension_converter"
+name = "movie_converter"
 version = "0.0.0"
 description = "A Tauri App"
 authors = ["you"]

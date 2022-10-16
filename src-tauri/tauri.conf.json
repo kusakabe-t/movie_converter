@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "movie_extension_converter",
+    "productName": "movie_converter",
     "version": "0.0.0"
   },
   "tauri": {
@@ -58,7 +58,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "movie_extension_converter",
+        "title": "movie_converter",
         "width": 800
       }
     ]
